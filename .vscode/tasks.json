@@ -1,0 +1,142 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Кириллов–Гвишиани: PDF",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "Кириллов–Гвишиани: prepare export",
+        "Кириллов–Гвишиани: export (Tinymist)",
+        "Кириллов–Гвишиани: validate PDF"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Кириллов–Гвишиани: prepare export",
+      "type": "process",
+      "command": "uv",
+      "args": [
+        "run",
+        "--locked",
+        "python",
+        "scripts/project.py",
+        "editor-prepare"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Кириллов–Гвишиани: export (Tinymist)",
+      "type": "typst",
+      "command": "export",
+      "export": {
+        "format": "pdf",
+        "inputPath": "${workspaceFolder}/content/main.typ",
+        "pdf.pdfTags": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Кириллов–Гвишиани: validate PDF",
+      "type": "process",
+      "command": "uv",
+      "args": [
+        "run",
+        "--locked",
+        "python",
+        "scripts/project.py",
+        "editor-finish"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Кириллов–Гвишиани: check",
+      "type": "process",
+      "command": "uv",
+      "args": [
+        "run",
+        "--locked",
+        "python",
+        "scripts/project.py",
+        "check"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Кириллов–Гвишиани: lint",
+      "type": "process",
+      "command": "uv",
+      "args": [
+        "run",
+        "--locked",
+        "python",
+        "scripts/project.py",
+        "lint"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Кириллов–Гвишиани: PDF without editorial notes",
+      "type": "process",
+      "command": "uv",
+      "args": [
+        "run",
+        "--locked",
+        "python",
+        "scripts/project.py",
+        "build-no-notes"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Кириллов–Гвишиани: corrections",
+      "type": "process",
+      "command": "uv",
+      "args": [
+        "run",
+        "--locked",
+        "python",
+        "scripts/project.py",
+        "corrections"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Кириллов–Гвишиани: format",
+      "type": "process",
+      "command": "uv",
+      "args": [
+        "run",
+        "--locked",
+        "python",
+        "scripts/project.py",
+        "fmt"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

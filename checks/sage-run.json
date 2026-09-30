@@ -1,0 +1,15 @@
+{
+  "executed_utc": "2026-09-30T07:28:55Z",
+  "script": "checks/sage/chapter_i.py",
+  "script_sha256": "938689532f7073fb1f4067e4ac35986b71afbfdcdcb4bacf58ee382bd53aa86b",
+  "sage": "10.9 (2026-05-04)",
+  "status": "passed",
+  "exact_checks": 65,
+  "passage_sha256_observed_after_run": {
+    "hint:poset-mobius-inversion": "f6392a59217c2515782b4407c1f3de418dd4ad933e1f6cc2b4a21b6a255ae47b",
+    "hint:mobius-functions": "5e7eb32e4bfcffdeabcca4705441448ceceabcd65676a60592e720695b54a6fe",
+    "hint:padic-expansions": "216296b0893022ece3b757b82fa38ed3ddf086db7c259b6b77a6a52d0c9fcee8"
+  },
+  "scope": "Incidence orientation on the two-element chain; symbolic QQ[q,t] identities n=0..8; valuations of p^(-2)-p^(-1), p=2,3,5,7.",
+  "limitations": "Finite audit is not a general proof. Passage hashes were recorded immediately after the run; no immutable before/after source snapshot was taken."
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "file": "checks/lean/KirillovGvishiani/StableDigits.lean",
+    "declarations": [
+      "KirillovGvishiani.StableDigits.finite_block",
+      "KirillovGvishiani.StableDigits.lower_half_line",
+      "KirillovGvishiani.StableDigits.escaping_pointwise",
+      "KirillovGvishiani.StableDigits.escaping_no_lower_bound"
+    ],
+    "book": "Глава I, § 2, указание 32. При стабилизации каждой цифры и общей нижней границе K все цифры ниже любого фиксированного порога B стабилизируются одновременно. a n i — цифра с индексом i у члена n. PointwiseStable — авторская поразрядная стабилизация. hK — добавленная необходимая нижняя граница. escaping n i — цифры контрпримера p^(-n).",
+    "limitations": "Проверен конечный комбинаторный шаг для произвольной последовательности цифр и контрпример к пропуску нижней границы. Не формализованы построение Q_p, формула p-адического расстояния, необходимость ограниченности для ряда Коши и общий критерий Коши в Q_p.",
+    "passages": [
+      "pr:padic-expansions",
+      "hint:padic-expansions"
+    ]
+  }
+]
