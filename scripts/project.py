@@ -35,8 +35,8 @@ def stage(root=ROOT):
 
 
 def typst_inputs(root=ROOT, *, notes=True):
-    """`--input` arguments of every typst/tinymist run of this book."""
-    args = ['--input', 'stage='+stage(root)]
+    """Portable font selection and inputs of every typst/tinymist run."""
+    args = ['--ignore-system-fonts', '--input', 'stage='+stage(root)]
     if not notes:
         # Editorial notes (#ed-note) switched off: the no-notes edition.
         args += ['--input', 'editorial-notes=off']

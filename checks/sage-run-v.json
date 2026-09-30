@@ -1,0 +1,16 @@
+{
+  "script": "checks/sage/chapter_v.py",
+  "script_sha256": "cd66848db5856b9f6f77c18ec219e1b54c423e5d365ded0d409b0723f656445b",
+  "sage": "10.9 (2026-05-04)",
+  "status": "passed",
+  "exact_checks": 127,
+  "passages": [
+    "hint:irreducible-rotation-representation-spin-canonical-form",
+    "hint:rectangular-barrier-scattering-amplitudes",
+    "hint:delta-barrier-scattering-limit",
+    "hint:orbital-angular-momentum-commutation-relations"
+  ],
+  "scope": "Spin matrices n=0..8, normalization ratios; four barrier matching equations, delta matching and unitarity; orbital signs on coordinate polynomials.",
+  "limitations": "Exact finite audits do not prove convergence, classification of arbitrary representations or existence of scattering limits.",
+  "recorded_utc": "2026-09-30T13:40:53.158937+00:00"
+}

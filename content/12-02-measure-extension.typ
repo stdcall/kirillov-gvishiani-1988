@@ -7,9 +7,11 @@
 
 #definition[
   #idx("Мера")_Мерой_ на полукольце $S subset P(X)$ называется вещественная
-  неотрицательная функция $mu$ на $S$, обладающая свойством аддитивности:
+  неотрицательная функция $mu$ на $S$, обладающая свойством конечной
+  аддитивности: если $A_1, dots, A_n in S$ и их дизъюнктное объединение
+  принадлежит $S$, то
 
-  $ mu(A union.sq B) = mu(A) + mu(B). $
+  $ mu(union.sq_(k=1)^n A_k) = sum_(k=1)^n mu(A_k). $
 ] <def:measure>
 
 Мера $mu$ называется #idx("Мера", "счетно-аддитивная")_счетно-аддитивной_ (или
@@ -22,7 +24,7 @@ $ mu(union.sq_(k = 1)^infinity A_k) = sum_(k = 1)^infinity mu(A_k). $
 $S$, то правая часть равенства~@eq:countable-measure-additivity сходится и ее
 сумма равна левой части.)
 
-*Примеры.*
+#examples-heading[Примеры.]
 
 + Пусть $x_0$ — фиксированная точка $X$. Для любого множества $A subset X$
   положим
@@ -181,8 +183,9 @@ $mu(A) <= sum_k mu(A_k)$.
   #source(29)Покажем теперь, что $L(S)$ есть $sigma$-алгебра. Пусть
   $A_k in L(S)$ и $A = union_(k = 1)^infinity A_k$. Для любого $epsilon > 0$
   существуют такие множества $B_k in R(S)$, что
-  $mu^*(A Delta B) < epsilon / 2^k$. Положим $B = union_(k = 1)^infinity B_k$.
-  Из включения $(union_(k = 1)^infinity A_k) Delta (union_(k = 1)^infinity B_k)
+  $mu^*(A_k Delta B_k) < epsilon / 2^k$. Положим
+  $B = union_(k = 1)^infinity B_k$. Из включения
+  $(union_(k = 1)^infinity A_k) Delta (union_(k = 1)^infinity B_k)
   subset union_(k = 1)^infinity (A_k Delta B_k)$ вытекает, что
   $mu^*(A Delta B) < sum_(k = 1)^infinity epsilon / 2^k = epsilon$.
 
@@ -232,7 +235,7 @@ $mu(A) <= sum_k mu(A_k)$.
 ]
 
 Условие $X in R(S)$ оказывается в ряде случаев слишком сильным. Рассмотрим более
-слабое условие $X in R_(sigma)(S)$. Тогда $X = union.sq_(k = 1)^infinity X_n$,
+слабое условие $X in R_(sigma)(S)$. Тогда $X = union.sq_(n = 1)^infinity X_n$,
 где $X_n in S$; таким образом, все пространство является счетным объединением
 множеств из полукольца. Мера $mu$ в этом случае называется #idx(
   "Мера",

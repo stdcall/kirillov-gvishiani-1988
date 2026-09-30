@@ -1,6 +1,6 @@
 #import "numbering.typ": restart-counters
 #import "statements.typ": numbered-display
-#import "main-defs.typ": reference-rules
+#import "main-defs.typ": editorial-bibliography, reference-rules
 #let roman(n) = numbering("I", n)
 #let heading-number(it) = counter(heading).at(it.location()).last()
 #let heading-prefix(it) = {
@@ -71,6 +71,10 @@
     it.inner(),
   ))
   set math.equation(numbering: none, supplement: none)
+  show math.equation.where(block: true): set block(
+    above: 0.8em,
+    below: 0.8em,
+  )
   show math.equation: set text(font: "STIX Two Math")
   show math.equation: it => {
     show ":": math.class("punctuation", ":")
@@ -103,4 +107,5 @@
   show table: set par(first-line-indent: 0pt, justify: false)
   show: reference-rules
   body
+  editorial-bibliography
 }

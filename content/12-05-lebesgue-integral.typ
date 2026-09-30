@@ -58,7 +58,7 @@ $mu$ идет речь. Когда нужно подчеркнуть, что м�
     всеми свойствами расстояния, кроме, быть может, отделимости.
   + Справедлива оценка
     $abs(integral_A f dif mu - integral_A g dif mu) <= d_(1)(f, g)$
-    для всех $f, g in S(x)$ и всех $A in frak(A)$.
+    для всех $f, g in S(X)$ и всех $A in frak(A)$.
 ] <th:simple-function-integral-properties>
 
 #proof[
@@ -157,6 +157,7 @@ $ L_(infinity)(X, mu) subset L_(1)(X, mu). $
 
   $ phi_(1)(x) = sum_(k=1)^infinity c_k chi_(A_k)(x). $
 
+  Отбрасывая слагаемые с $c_k = 0$, можем считать, что все $mu(A_k)$ конечны.
   Поскольку $sum_(k=1)^infinity abs(c_k) mu(A_k)
   = integral_X abs(phi_(1)(x)) dif mu(x) >= 1$, существует такой номер $N$, что
   $sum_(k=1)^N abs(c_k) mu(A_k) >= 3/4$. Положим $A = union.sq_(k=1)^N A_k$, и
@@ -172,7 +173,7 @@ $ L_(infinity)(X, mu) subset L_(1)(X, mu). $
   $
 
   $
-    abs(integral_B abs(phi_n) dif mu - integral_B abs(phi_(n+1)) dif mu)
+    integral_B abs(phi_n) dif mu - integral_B abs(phi_(n+1)) dif mu
     <= d_(1)(phi_n, phi_(n+1)) <= 1/2^(n+2).
   $
 

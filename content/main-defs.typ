@@ -6,6 +6,10 @@
   position: here().position(),
 ))]
 #let number-text(body) = text(weight: "semibold", style: "normal", body)
+#let examples-heading(body) = block(
+  sticky: true,
+  par(first-line-indent: (amount: 1.25em, all: true), strong(body)),
+)
 #let reference-rules(body) = {
   show ref: it => {
     let caption = it.supplement not in (auto, none, [])

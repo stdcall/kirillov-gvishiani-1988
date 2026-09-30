@@ -1,8 +1,8 @@
 """Build the book, its no-notes edition and the corrections sheet, and check
 every PDF before it replaces the previous one.
 
-Bookmarks preserve zoom and horizontal position with
-`[page /XYZ null top null]`. Every nested destination is validated.
+Bookmarks preserve the current zoom with
+`[page /XYZ left top null]`, with numeric left. Every destination is validated.
 
 Page labels are Typst's own, from `page(numbering: ...)`: the cover without
 a number, front matter in roman numerals, the text in arabic from 1. They are
@@ -18,7 +18,7 @@ import time
 
 from pypdf import PdfReader, PdfWriter
 from pypdf.generic import ArrayObject, FloatObject, NameObject, NullObject
-from check_links import check_hint_links, check_links, set_link_descriptions
+from check_links import check_hint_links, check_links, pt, set_link_descriptions
 from check_whitespace import check_whitespace
 from lint_typst import (lint, input_hashes, evaluate, tool_versions,
                         unresolved_references, write_unresolved, from_roman)
@@ -97,9 +97,27 @@ def accessibility_signature(reader):
             'font_program_sha256': sorted(embedded)}
 
 
-def normalize_outline_destinations(writer, original, *, left=None):
-    """Keep heading heights and inherited zoom in every nested bookmark."""
+def normalize_outline_destinations(writer, original, *, left=0, headings=()):
+    """Open page-start chapters at the top; retain other heading anchors."""
     count = 0
+    page_ids = {p.indirect_reference.idnum: i + 1
+                for i, p in enumerate(original.pages)}
+    def target_top(dest):
+        if not headings:
+            return dest[3]
+        page = page_ids[dest[0].idnum]
+        height = float(original.pages[page - 1].mediabox.top)
+        matches = [h for h in headings
+                   if h['position']['page'] == page
+                   and abs(height - float(dest[3])
+                           - max(0, pt(h['position']['y']) - 10)) < 0.03]
+        assert len(matches) == 1, 'Bookmark must match one native heading'
+        heading = matches[0]
+        # book-style starts every part and chapter on a new page. A first
+        # chapter may share that page with its part title above it.
+        if heading['level'] <= 2:
+            return FloatObject(height)
+        return dest[3]
 
     def walk(ref):
         nonlocal count
@@ -119,9 +137,11 @@ def normalize_outline_destinations(writer, original, *, left=None):
             if not isinstance(dest, (list, ArrayObject)) or len(dest) != 5 \
                     or dest[1] != '/XYZ':
                 raise ValueError(f'Unexpected destination: {dest}')
-            x = NullObject() if left is None else FloatObject(left)
+            if not isinstance(left, (int, float)):
+                raise ValueError('Bookmark left must be a numeric coordinate')
+            x = FloatObject(left)
             holder[NameObject(key)] = ArrayObject([
-                dest[0], NameObject('/XYZ'), x, dest[3], NullObject()])
+                dest[0], NameObject('/XYZ'), x, target_top(dest), NullObject()])
             count += 1
             if node.get('/First'):
                 walk(node['/First'])
@@ -171,7 +191,7 @@ def page_label_problems(labels):
     return problems
 
 
-def normalize_outlines(raw, output, *, book=True, references=()):
+def normalize_outlines(raw, output, *, book=True, references=(), headings=()):
     """Write `output` from Typst's `raw` PDF: zoom-preserving bookmarks,
     link descriptions; everything else checked unchanged."""
     original = PdfReader(raw)
@@ -182,7 +202,9 @@ def normalize_outlines(raw, output, *, book=True, references=()):
     set_link_descriptions(writer, references)
     preserved = accessibility_signature(original)
     left = settings()['pdf_navigation']['outline_left']
-    count = normalize_outline_destinations(writer, original, left=left)
+    assert isinstance(left, (int, float)), 'Bookmark left must be numeric'
+    count = normalize_outline_destinations(writer, original, left=left,
+                                           headings=headings)
     assert '/OpenAction' not in writer.root_object
     tmp = Path(output).with_suffix('.tmp.pdf')
     writer.write(tmp)
@@ -202,8 +224,7 @@ def normalize_outlines(raw, output, *, book=True, references=()):
                 continue
             dest = item.dest_array
             assert len(dest) == 5 and dest[1] == '/XYZ'
-            assert (isinstance(dest[2], NullObject) if left is None
-                    else float(dest[2]) == left)
+            assert float(dest[2]) == left
             assert isinstance(dest[4], NullObject), 'Bookmark sets a zoom'
             page = checked.get_destination_page_number(item)
             assert page is not None and 0 <= page < len(checked.pages)
@@ -309,7 +330,8 @@ def build(force=False, thorough=False, exported=None, notes=True):
         raise SystemExit('Unresolved references in the final stage: '
                          + ', '.join(t['target'] for t in unresolved['targets']))
     staged = cache/f'book{variant}-checked.pdf'
-    report = normalize_outlines(raw, staged, references=references)
+    report = normalize_outlines(raw, staged, references=references,
+                                headings=document['headings'])
     links = check_links(staged, references)
     # A problem's head leads to its hint and the hint's number back.
     links['hint_links'] = check_hint_links(

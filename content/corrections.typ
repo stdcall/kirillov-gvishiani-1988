@@ -14,7 +14,7 @@
 // document, and a reference (`@ch:lie-groups`, `@bib:Wolf1972`) would
 // print "?" (the book's reference rule, applied here too).
 #show: book-defs.reference-rules
-#let book-scope = dictionary(book-defs)
+#let book-scope = dictionary(book-defs) + (Var: math.op("Var"))
 #let entries = json("../corrections.json").entries
 #let markup(field) = eval(field, mode: "markup", scope: book-scope)
 

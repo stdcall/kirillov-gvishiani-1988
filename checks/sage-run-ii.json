@@ -1,0 +1,14 @@
+{
+  "script": "checks/sage/chapter_ii.py",
+  "script_sha256": "e1299cffb1f34ab5e1534ee485c60193518d5de5b7b7934bdd3c9e446b046604",
+  "sage": "10.9 (2026-05-04)",
+  "status": "passed",
+  "exact_checks": 18,
+  "passages": [
+    "hint:wiener-quadratic-exponential-integral",
+    "hint:cantor-staircase-stieltjes-integrals"
+  ],
+  "scope": "Tridiagonal endpoint determinants n=1..12 in QQ[a,z]; four Cantor moments and generating-function factor.",
+  "limitations": "Finite determinant audit is not a general proof; limit arguments are not verified by these calculations.",
+  "recorded_utc": "2026-09-30T11:13:26.963093+00:00"
+}
