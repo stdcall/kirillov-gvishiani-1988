@@ -102,12 +102,6 @@ def normalize_outline_destinations(writer, original, *, left=0, headings=()):
     count = 0
     page_ids = {p.indirect_reference.idnum: i + 1
                 for i, p in enumerate(original.pages)}
-    first_heading = {}
-    for heading in headings:
-        position = heading['position']
-        page, y = position['page'], pt(position['y'])
-        first_heading[page] = min(first_heading.get(page, y), y)
-
     def target_top(dest):
         if not headings:
             return dest[3]
@@ -119,8 +113,9 @@ def normalize_outline_destinations(writer, original, *, left=0, headings=()):
                            - max(0, pt(h['position']['y']) - 10)) < 0.03]
         assert len(matches) == 1, 'Bookmark must match one native heading'
         heading = matches[0]
-        if (heading['level'] <= 2
-                and pt(heading['position']['y']) == first_heading[page]):
+        # book-style starts every part and chapter on a new page. A first
+        # chapter may share that page with its part title above it.
+        if heading['level'] <= 2:
             return FloatObject(height)
         return dest[3]
 
