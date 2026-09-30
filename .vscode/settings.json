@@ -40,7 +40,7 @@
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   "tinymist.typstExtraArgs": [
-    "--input=stage=draft"
+    "--input=stage=final"
   ],
   "task.saveBeforeRun": "always"
 }

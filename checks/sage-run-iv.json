@@ -1,0 +1,16 @@
+{
+  "script": "checks/sage/chapter_iv.py",
+  "script_sha256": "4a09c2a0a0b8d6fbeb85192937a8c8779824c479460a910abbb119ceabecf0c9",
+  "sage": "10.9 (2026-05-04)",
+  "status": "passed",
+  "exact_checks": 61,
+  "passages": [
+    "hint:torus-trigonometric-approximate-identity",
+    "hint:continuous-trace-class-kernel-diagonal-trace",
+    "hint:symmetric-group-real-algebra-decomposition",
+    "hint:sturm-liouville-first-order-system-lagrange-identity"
+  ],
+  "scope": "Fourier coefficient identities k=1..8; Weyl 2x2 matrix identity; all 36 S3 products and rank-four image.",
+  "limitations": "Exact finite audits do not prove convergence, classification of arbitrary representations or existence of scattering limits.",
+  "recorded_utc": "2026-09-30T13:40:53.158621+00:00"
+}

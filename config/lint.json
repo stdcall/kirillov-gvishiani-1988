@@ -5,9 +5,129 @@
     "bib-item"
   ],
   "literal_references": {
+    "content/12-06-stieltjes-integral.typ": {
+      "теоремы 6.16": "The attached full citation is Rudin, Principles of Mathematical Analysis, 3rd ed. (1976); the tail estimate in the proof of Theorem 6.16 concerns a sum of jumps."
+    },
     "content/12-07-integral-properties.typ": {
-      "Отметим существенность условий суммируемости $f$ в пп. 1), 2), 3) и условия неотрицательности в п. 4).": "References to the four enumerated clauses of the immediately preceding Fubini theorem, not to the book hierarchy. The clauses use native enum numbering; enum items are not native referenceable elements in Typst 0.15.1."
+      "Отметим существенность условий суммируемости $f$ в пп. 1), 2), 3) и условия неотрицательности в п. 4).": "References to the four enumerated clauses of the immediately preceding Fubini theorem, not to the book hierarchy. The clauses use native enum numbering; enum items are not native referenceable elements in Typst 0.15.1.",
+      "теоремы 2.36 и 2.39": "The attached full citation is Folland, Real Analysis, 2nd ed. (1999); external product-measure and completion-of-product theorems.",
+      "теорему 3.8": "The attached full citation is Folland, Real Analysis, 2nd ed. (1999); external Lebesgue–Radon–Nikodym theorem."
+    },
+    "content/13-07-hahn-banach.typ": {
+      "теорему 5.7": "The immediately attached full citation is Folland, Real Analysis, 2nd ed. (1999); this is the complex Hahn–Banach theorem of that external book, not a theorem number of this edition."
+    },
+    "content/32-03-hints-measure-constructions.typ": {
+      "читатель отсылается к книге @bib:Bourbaki1967, гл. V, § 6, упражнение 15.": "Chapter, section and exercise in the cited external book by Bourbaki, Интегрирование: Меры. Интегрирование мер (1967).",
+      "в упражнениях 30–31 первой главы": "The attached full citation is Folland, Real Analysis, 2nd ed. (1999); these are exercises 30 and 31 on positive-measure difference sets, printed p. 40.",
+      "теоремы 3.3": "External locator in the adjacent full citation to Folland1999, Hahn decomposition, printed86–87."
+    },
+    "content/32-04-hints-function-properties.typ": {
+      "теорему 2.33 и упражнение 44": "The attached full citation is Folland, Real Analysis, 2nd ed. (1999); Egoroff's theorem and the Lusin exercise, printed pp. 62 and 64.",
+      "теорему 1 в гл. III, § 8": "External locator in the adjacent full citation to Shiryaev2021, probability distribution quantile, printed485."
+    },
+    "content/32-06-hints-lebesgue-integral.typ": {
+      "теорему 2.24": "The attached full citation is Folland, Real Analysis, 2nd ed. (1999); dominated convergence theorem, printed p. 54.",
+      "теорему 2.14": "External locator in the adjacent full citation to Folland1999, monotone convergence, printed50."
+    },
+    "content/13-08-operator-topologies.typ": {
+      "§5.4 и упражнение 48(d)": "External locator in the adjacent full citation to Folland1999, operator topologies and weak-star sequential completeness, printed169–170."
+    },
+    "content/13-09-compact-operators.typ": {
+      "упражнение 52(c, e)": "External locator in the adjacent full citation to Folland1999, reflexivity and weak compactness, printed171."
+    },
+    "content/13-13-integrable-function-spaces.typ": {
+      "теорему 6.15": "External locator in the adjacent full citation to Folland1999, duality of Lp, printed190."
+    },
+    "content/13-14-continuous-function-spaces.typ": {
+      "теорему 5.18": "External locator in the adjacent full citation to Folland1999, Alaoglu theorem, printed169–170."
+    },
+    "content/13-19-distribution-operations.typ": {
+      "следствие 7.18": "External locator in the adjacent full citation to Folland1999, representation by finite complex measures, printed223.",
+      "теорему 9.14": "External locator in the adjacent full citation to Folland1999, continuous-function representation of distributions, printed297."
+    },
+    "content/13-22-hilbert-operators.typ": {
+      "упражнение 52(e) в § 5.4": "External locator in the adjacent full citation to Folland1999, weak compactness of a reflexive unit ball, printed171."
+    },
+    "content/32-07-hints-bounded-variation.typ": {
+      "теоремах 6.6–6.7": "External locator in the adjacent full citation to Rudin1976, Riemann–Stieltjes sums criterion, printed114–115.",
+      "теоремах 6.15–6.16": "External locator in the adjacent full citation to Rudin1976, bounded-variation and jump integrators, printed120–121."
+    },
+    "content/32-08-hints-integral-properties.typ": {
+      "теореме 1 гл. III, § 8": "External locator in the adjacent full citation to Shiryaev2021, probability distribution quantile, printed485.",
+      "теоремы 2.36 и 2.39": "External locator in the adjacent full citation to Folland1999, product measure and completed product measure, printed66–68."
+    },
+    "content/13-17-smooth-function-density.typ": {
+      "лемме 3": "External locator in the adjacent full citation to Johanis2015, published Gaussian approximation lemma, printed3–4."
+    },
+    "content/25-07-quantum-mechanics.typ": {
+      "определение 12.16, теоремы 12.17 и 12.25": "External Kantorovitz2022 locators, printed366–367/372–373, fullcitation adjacent."
+    },
+    "content/15-06-spectral-measures.typ": {
+      "теоремы 7.3.1": "External Simon2015d Stone theorem, secondproof printed553, fullcitation adjacent.",
+      "§ 9.2": "External Kantorovitz2022 spectral integration and simple functions, printed255–256, full citation adjacent."
+    },
+    "content/24-04-fourier-integral.typ": {
+      "теоремах 6.4.2–6.4.4": "External Simon2015a Hermitebasis/Schwartzcoefficient theorems, printed525–528.",
+      "§ 6.4": "External Simon2015a section, fullcitation adjacent."
+    },
+    "content/24-05-distribution-fourier.typ": {
+      "формуле (6.9.28)": "External Simon2015a heatkernel, printed592.",
+      "задаче 10": "External Simon2015a Tychonoffcounter, printed611.",
+      "§ 6.9": "External Simon2015a section, fullcitation adjacent."
+    },
+    "content/25-04-operator-extensions.typ": {
+      "формуле (7.4.68)": "External Simon2015d Weylcircles, printed569.",
+      "§ 7.4": "External Simon2015d section, fullcitation adjacent."
+    },
+    "content/35-04-hints-operator-extensions.typ": {
+      "§ 7.4": "External Simon2015d Weylcircles discussion, printed569, fullcitation adjacent.",
+      "формулой (7.4.68)": "External Simon2015d Weylmfunction definition, printed569."
+    },
+    "content/15-07-quantum-mechanics.typ": {
+      "теорему 6.50": "External Folland2015 Stone–vonNeumann theorem, printed207–208, fullcitation adjacent.",
+      "теореме 9.8, пункт 5": "External Kantorovitz2022 spectral atoms and eigenvectors, printed263, full citation adjacent."
+    },
+    "content/34-05-hints-fourier-integral.typ": {
+      "теореме 1.36": "External Knapp2016a integral Taylor formula, printed44, full citation adjacent.",
+      "теоремах 6.6.6 и 6.6.19": "External Simon2015a Bochner theorem and distributional positivity, printed552/565, full citation adjacent."
+    },
+    "content/33-01-hints-normed-definitions.typ": {
+      "теоремы 3.1": "External Lamperti1958 classification of Lp isometries, printed461–462; full citation adjacent."
+    },
+    "content/33-04-hints-banach-constructions.typ": {
+      "§5.5, упражнение 13(b)": "External Simon2015a quotient norm problem, printed428; full citation adjacent.",
+      "§5.7, упражнение 9(a)": "External Simon2015a Banach quotient problem, printed445; full citation adjacent."
+    },
+    "content/33-05-hints-topology-convexity.typ": {
+      "следствие 4G.3": "External Hatcher2002 nerve theorem, printed459; full citation adjacent.",
+      "предложение 3.29": "External Hatcher2002 homology of open subsets of Euclidean space, printed239; full citation adjacent.",
+      "предложения 5.7.4(c,d)": "External Simon2015a continuous-function quasi-norm duality, printed439–440; full citation adjacent."
+    },
+    "content/33-06-hints-linear-operators.typ": {
+      "следствии 7.18": "External Folland1999 Riesz representation for complex measures, printed223; full citation adjacent.",
+      "теорему 6.1.3": "External Simon2015c Hardy inequality, printed550–551; full citation adjacent."
+    },
+    "content/33-07-hints-function-spaces.typ": {
+      "главе 2, §7, теореме 5": "External Helemskii2014 Grothendieck tensor product theorem, printed227–228; full citation adjacent.",
+      "пример 5.7.3": "External Simon2015a Schur property, printed438–439; full citation adjacent.",
+      "упражнение 6 к §5.7": "External Simon2015a L1 nonisomorphism problem, printed445; full citation adjacent.",
+      "следствием 7.17–7.18": "External Folland1999 Riesz representation theorem and corollary, printed223; full citation adjacent.",
+      "упражнения 6 к §4.2": "External Simon2015a Hahn–Mazurkiewicz theorem statement, printed205; full citation adjacent."
+    },
+    "content/33-08-hints-smooth-functions.typ": {
+      "теореме 8.18": "External Folland1999 smooth cutoff construction, printed245; full citation adjacent.",
+      "теореме 8.20": "External Folland1999 Fourier series Parseval identity, printed248; full citation adjacent."
+    },
+    "content/33-10-hints-hilbert-spaces.typ": {
+      "лемму 3": "External Kadison1974 spatial automorphisms of B(H), printed331; full citation adjacent."
     }
   },
-  "local_markup": {}
+  "local_markup": {
+    "content/15-07-quantum-mechanics.typ": {
+      "#block(breakable: false)[\n    Пусть, например, рассматриваемая система": "Keep the two paragraphs defining symmetric/exterior squares and their physical interpretation together as one discussion of indistinguishable particles; no page coordinates or forced break."
+    },
+    "content/32-06-hints-lebesgue-integral.typ": {
+      "#text[если существует $k$ такое, что $f(x), 0 in [t_k,t_(k+1)]$]": "The complete case condition is a single native content cell; its comma belongs to the mathematical condition and must not split cases arguments."
+    }
+  }
 }

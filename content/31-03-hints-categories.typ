@@ -183,7 +183,7 @@
 #hint[@pr:topological-net-limit][
   Точка $x in X$ является пределом направленности $\{x_alpha\}_(alpha in A)$,
   если для любой окрестности $U$ точки $x$ существует такой элемент $beta in A$,
-  что $x_alpha in U$ для всех $alpha > beta$.
+  что $x_alpha in U$ для всех $alpha >= beta$.
 ] <hint:topological-net-limit>
 
 #hint[@pr:continuity-limit-characterization][

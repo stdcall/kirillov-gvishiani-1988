@@ -778,7 +778,8 @@ def pitfall_checks(path, text, kinds, ends):
                 and not re.search(r'[.!?:\]$>]$', previous) \
                 and not re.match(r'^[ \t]*(?:#(?:import|let|set|show)\b|=+ )',
                                  previous)
-            prose_after = following and not re.match(r'^(=|#|\$\s)', following)
+            prose_after = following and not re.match(
+                r'^(?:=|#|\$\s|(?:\d+|[а-яёa-z])\))', following)
             if prose_before and prose_after:
                 add('T044', offset, 'Source anchor on its own line splits a '
                     'sentence into two paragraphs; place it inline')
@@ -1239,7 +1240,8 @@ def lint(root=ROOT):
         errors, labels, referred = source_checks(
             path, (root/path).read_text(), config, exceptions)
         findings.extend(errors)
-        if re.fullmatch(config['chapter_files'], path) is None:
+        if re.fullmatch(config['chapter_files'], path) is None \
+                and path != settings(root)['entry']:
             continue
         for name, line in referred:
             references.setdefault(name, (path, line))

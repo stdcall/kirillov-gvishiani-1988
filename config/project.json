@@ -2,9 +2,9 @@
   "entry": "content/main.typ",
   "output": "build/kirillov-gvishiani-1988.pdf",
   "cache": "/tmp/kirillov-gvishiani-1988/cache",
-  "stage": "draft",
+  "stage": "final",
   "pdf_navigation": {
-    "outline_left": null
+    "outline_left": 0
   },
   "font_paths": [
     "assets/fonts"
@@ -41,7 +41,5 @@
   "prose": {
     "checker": "vale",
     "header_band": 45.0
-  },
-  "work": "/tmp/kirillov-gvishiani-1988",
-  "library": "../../math/analysis/кириллов-функан.pdf"
+  }
 }

@@ -1,6 +1,6 @@
 #import "numbering.typ": (
-  family-counter, formula-primes, numbered-record, object-number, record,
-  record-number,
+  family-counter, formula-prime-marks, formula-primes, numbered-record,
+  object-number, record, record-number,
 )
 #import "main-defs.typ": number-text
 #let references-in(it) = {
@@ -11,14 +11,20 @@
 #let numbered-display(it) = {
   let base = formula-primes.at(str(it.label), default: none)
   let prime = if base != none { str(base) }
+  let prime-mark = formula-prime-marks.at(str(it.label), default: "′")
   if prime == none { family-counter("eq").step() }
   context {
-    record("eq", prime: prime)
+    record("eq", prime: prime, prime-mark: prime-mark)
     math.equation(
       block: true,
       number-align: end + horizon,
       numbering: _ => text(font: "Libertinus Serif", style: "normal")[(
-        #object-number("eq", here(), prime: prime).last()
+        #object-number(
+          "eq",
+          here(),
+          prime: prime,
+          prime-mark: prime-mark,
+        ).last()
         )],
       it.body,
     )
@@ -38,7 +44,17 @@
 
 // Put `head` at the start of the first paragraph of `body`.
 #let prepend-heading(body, head) = {
-  if body.func() in (enum.item, list.item, enum, list, terms) {
+  if body.func() == math.equation and body.block {
+    (
+      block(
+        sticky: true,
+        above: 0pt,
+        below: 0pt,
+        par(first-line-indent: (amount: 1.25em, all: true), head),
+      )
+        + body
+    )
+  } else if body.func() in (enum.item, list.item, enum, list, terms) {
     // A statement beginning with a list has a separate heading paragraph.
     // Native block stickiness keeps it with the first item across a page.
     block(sticky: true, above: 0pt, below: 0.58em, head) + body
@@ -48,6 +64,46 @@
     block(prepend-heading(inner, head), ..fields)
   } else if body.func() == sequence and body.children.len() > 0 {
     let children = body.children
+    let display = children.position(it => (
+      it.func() == math.equation and it.block
+    ))
+    if display != none {
+      let prefix = children.slice(0, display)
+      let prose-start = prefix.position(it => (
+        it.func() not in ([ ].func(), parbreak)
+      ))
+      if prose-start != none {
+        let paragraph = prefix.slice(prose-start)
+        let breaks = paragraph.filter(it => it.func() == parbreak).len()
+        let boundary = paragraph.position(it => it.func() == parbreak)
+        let follows-break = (
+          boundary == none
+            or paragraph.slice(boundary + 1).all(it => it.func() == [ ].func())
+        )
+        let has-block = paragraph.any(it => (
+          it.func() in (block, grid, table, figure, list, enum, terms)
+        ))
+        if breaks <= 1 and follows-break and not has-block {
+          // Keep a statement's introductory paragraph with its display.
+          // An explicit native paragraph preserves its indent and PDF tag.
+          return keep-label(body, join-pieces((
+            block(
+              sticky: true,
+              above: 0pt,
+              below: 0pt,
+              par(
+                first-line-indent: (amount: 1.25em, all: true),
+                head
+                  + join-pieces(paragraph.filter(it => (
+                    it.func() != parbreak
+                  ))),
+              ),
+            ),
+            ..children.slice(display),
+          )))
+        }
+      }
+    }
     let first = children.position(it => (
       it.func()
         not in (
@@ -228,7 +284,7 @@
     kind == "very-hard"
   ) { super("**") } else { assert(kind == none) }
 }
-#let hint-link(from, number, target) = metadata((
+#let hint-link(from, number, target) = context metadata((
   kind: "hint-link",
   from: from,
   number: number,

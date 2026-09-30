@@ -47,13 +47,13 @@ $A without B = C_1 union.sq C_2 union.sq dots union.sq C_n$ (символ $union
 означает #idx("Дизъюнктное объединение")_дизъюнктное объединение_, т. е.
 объединение непересекающихся множеств).
 
-*Примеры.*
+#examples-heading[Примеры.]
 
 + Совокупность $S$ всех полуинтервалов вида $[a, b)$ на вещественной прямой
   является полукольцом, но не кольцом.
 + Если $R_1 subset P(X_1)$ и $R_2 subset P(X_2)$ — кольца множеств, то семейство
 
-  $ R_1 times R_2 = {A times B in P(X times Y) | A in R_1, B in R_2} $
+  $ R_1 times R_2 = {A times B in P(X_1 times X_2) | A in R_1, B in R_2} $
 
   является полукольцом (но, вообще говоря, не кольцом). То же верно, если $R_1$
   и $R_2$ — полукольца (см. задачу~@pr:product-semirings).
@@ -92,9 +92,10 @@ $
 + $chi_(A_1 Delta A_2) = chi_(A_1) + chi_(A_2)$;
 + $chi_(A_1 without A_2) = chi_(A_1) - chi_(A_1) dot chi_(A_2)$.
 
-Пусть $X$ — топологическое пространство (см. гл.~@ch:theory-sets-topology,
-§~@sec:theory-topology-convexity-seminorms), $U subset P(X)$ — семейство
-открытых множеств в $X$. Элементы $R_(sigma)(U)$ называются #idx(
+Пусть $X$ — топологическое пространство (см.
+гл.~@ch:theory-linear-spaces-operators,
+§~@sec:theory-linear-topological-spaces), $U subset P(X)$ — семейство открытых
+множеств в $X$. Элементы $R_(sigma)(U)$ называются #idx(
   "Борелевские подмножества",
 )_борелевскими подмножествами_ в $X$.
 

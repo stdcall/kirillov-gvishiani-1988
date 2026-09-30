@@ -2,7 +2,7 @@
 
 Typst 0.15.1, Typstyle 0.15.1, Tinymist 0.15.8. Команды: `just build`,
 `just check`, `just fmt`. Python-зависимости закреплены в uv.lock.
-Готовые PDF находятся в build/, промежуточное — в work конфигурации.
+Готовые PDF находятся в build/, промежуточное — в cache конфигурации.
 
 Главы — обычная разметка, подключаемая через include. Общие правила
 в book-style.typ, счётчики в numbering.typ, окружения в statements.typ,
