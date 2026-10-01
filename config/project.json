@@ -1,7 +1,6 @@
 {
   "entry": "content/main.typ",
   "output": "build/kirillov-gvishiani-1988.pdf",
-  "cache": "/tmp/kirillov-gvishiani-1988/cache",
   "stage": "final",
   "pdf_navigation": {
     "outline_left": 0
